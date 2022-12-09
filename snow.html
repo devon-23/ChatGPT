@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snowfall Effect</title>
+    <style>
+      /* Define a common snowflake style */
+      .snowflake {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        animation: snowfall 5s linear infinite;
+      }
+
+      /* Define the keyframe animations for each snowflake */
+      @keyframes snowfall {
+        0% {
+          top: 0;
+          left: 0;
+        }
+
+        100% {
+          top: 100%;
+          left: 100%;
+        }
+      }
+       /* Make the background color black */
+        body {
+            background-color: #000000;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Create a container element to hold the snowflakes -->
+    <div id="snowflakes">
+      <!-- Create 10 snowflake elements -->
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+      <div class="snowflake"></div>
+    </div>
+  </body>
+</html>
