@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Add some styling to the page */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ccc;
+    }
+
+    #dvd {
+      /* Set the initial position of the DVD to a random location on the page */
+      position: absolute;
+      top: random(100) * 100%;
+      left: random(100) * 100%;
+
+      /* Style the DVD image */
+      width: 250px;
+      height: 150px;
+      /* background-color: blue; */
+      background-image: url('./includes/images/dvd.png');
+      background-size: cover;
+    }
+    #counter {
+        /* Style the counter */
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Work Sans', sans-serif;
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- Add the DVD image to the page -->
+  <div id="dvd"></div>
+
+  <!-- Add the counter to the page -->
+  <p id="counter">0</p>
+
+  <script>
+    // Get a reference to the DVD element and counter elements
+    const dvd = document.querySelector('#dvd');
+    const counter = document.querySelector('#counter');
+
+    // Set the initial speed and direction of the DVD
+    let xSpeed = 2;
+    let ySpeed = 2;
+
+    // Animate the DVD
+    setInterval(() => {
+      // Update the position of the DVD
+      const x = parseInt(dvd.style.left) || 0;
+      const y = parseInt(dvd.style.top) || 0;
+      dvd.style.left = `${x + xSpeed}px`;
+      dvd.style.top = `${y + ySpeed}px`;
+
+      // Check if the DVD has hit any of the edges of the page
+      // and reverse its direction if necessary
+        if (x + xSpeed + 250 > window.innerWidth || x + xSpeed < 0) {
+            xSpeed = -xSpeed;
+            if (x + xSpeed + 250 > window.innerWidth && y + ySpeed + 150 > window.innerHeight - 50) {
+                // Increment the counter when the DVD hits the corner
+                counter.innerHTML = parseInt(counter.innerHTML) + 1;
+            }
+        }
+        if (y + ySpeed + 150 > window.innerHeight || y + ySpeed < 0) {
+            ySpeed = -ySpeed;
+            if (y + ySpeed + 150 > window.innerHeight && x + xSpeed + 250 > window.innerWidth - 50) {
+                // Increment the counter when the DVD hits the corner
+                counter.innerHTML = parseInt(counter.innerHTML) + 1;
+            }
+        }
+
+    }, 10);
+  </script>
+</body>
+</html>
